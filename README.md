@@ -1,439 +1,297 @@
-# AIML Learning Portfolio | Python, Pandas, NumPy, Data Visualization & SQL
+# 📦 Order Delay Intelligence: Predict, Explain, Recommend
 
-## Overview
+## 📖 Project Overview
 
-Welcome to my AI/ML learning portfolio repository.
+This project was completed as part of the **CodeTrade.io AI/ML Internship Mini Project – Phase 2**.
 
-This repository documents my journey from learning Python fundamentals to performing real-world data analysis using Pandas, NumPy, Data Visualization, and SQL. It contains hands-on practice exercises, mini-projects, data analysis assignments, and database operations completed as part of my Artificial Intelligence and Machine Learning learning path.
-
-The goal of this repository is to demonstrate practical programming skills, analytical thinking, problem-solving ability, and the application of data-driven techniques used in Data Science and Machine Learning.
+The objective is to analyze an e-commerce dataset, identify factors causing delivery delays, and build machine learning models that can predict whether an order is likely to be delayed. The project combines Data Analysis, SQL, Machine Learning, Model Evaluation, Hyperparameter Tuning, and Explainable AI (SHAP).
 
 ---
 
-## Technologies & Tools
+## 🎯 Business Problem
 
-* Python 3.x
+For an e-commerce company, delayed deliveries can negatively impact customer satisfaction and retention.
+
+This project aims to:
+
+* Analyze order delivery behavior.
+* Identify factors contributing to delivery delays.
+* Predict delayed orders before delivery.
+* Provide business recommendations to reduce future delays.
+* Explain model predictions using SHAP.
+
+---
+
+## 📂 Dataset
+
+Dataset Used: **Brazilian E-Commerce Public Dataset by Olist**
+
+Files Used:
+
+* `olist_orders_dataset.csv`
+* `olist_order_payments_dataset.csv`
+* `olist_customers_dataset.csv`
+* `olist_order_items_dataset.csv`
+* `olist_products_dataset.csv`
+
+Dataset Source:
+
+https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
+
+---
+
+## 🛠️ Technologies Used
+
+### Programming Language
+
+* Python
+
+### Libraries
+
 * Pandas
 * NumPy
 * Matplotlib
 * Seaborn
-* SQLite
+* SQLite3
 * Scikit-Learn
-* JSON
-* CSV
-* Jupyter Notebook
+* XGBoost
+* SHAP
+
+### Development Environment
+
 * Google Colab
-* Git & GitHub
+* Jupyter Notebook
 
 ---
 
-## Core Skills Demonstrated
+## 📊 Project Workflow
 
-### Programming
+### Phase 1: Data Audit & Cleaning
 
-* Python Fundamentals
-* Functions & Modular Programming
-* Object-Oriented Programming (OOP)
-* Exception Handling
-* File Handling
-* Data Structures
+* Loaded multiple CSV files
+* Checked data types
+* Identified missing values
+* Removed duplicates
+* Converted date columns into datetime format
 
-### Data Handling
+### Feature Engineering
 
-* CSV Processing
-* JSON Processing
-* Data Cleaning
-* Data Transformation
-* Missing Value Treatment
-* Data Validation
+Created new features such as:
 
-### Data Analytics
+* Delivery Days
+* Delay Days
+* Purchase Month
+* Purchase Weekday
+* Delayed (Target Variable)
 
-* Exploratory Data Analysis (EDA)
-* GroupBy Operations
-* Data Merging & Joins
-* Pivot Tables
-* Business Metrics Analysis
-* Data Storytelling
+---
 
-### Data Visualization
+## 📈 Exploratory Data Analysis (EDA)
 
-* Histogram
-* Scatter Plot
-* Bar Chart
-* Line Chart
-* Box Plot
-* Heatmap
+Generated multiple visualizations including:
 
-### Database Skills
+1. Delivery Days Distribution
+2. Delayed vs Non-Delayed Orders
+3. Monthly Order Trends
+4. State-wise Delay Analysis
+5. Payment Value Analysis
+6. Freight Cost vs Delay Relationship
 
-* SQLite Database Creation
-* SQL Queries
-* JOIN Operations
+### Key Insights
+
+* Higher freight costs are associated with increased delays.
+* Certain states experience higher delivery delays.
+* Delivery performance varies across months.
+* Larger orders tend to have longer delivery times.
+* Logistics-related features significantly impact delays.
+
+---
+
+## 🗄️ SQL Analysis
+
+Cleaned data was loaded into SQLite.
+
+Implemented:
+
+* SELECT
+* WHERE
+* GROUP BY
+* ORDER BY
 * Aggregate Functions
+* JOIN Operations
 * Subqueries
-* Pandas vs SQL Analysis
 
-### Professional Skills
-
-* Problem Solving
-* Analytical Thinking
-* Version Control using Git & GitHub
-* Documentation Writing
+A total of **10 SQL business queries** were created to analyze order behavior and delivery performance.
 
 ---
 
-# Project Collection
+## 🤖 Machine Learning Models
 
-## Day 1 – Python Fundamentals & Mini Projects
+### Baseline Model
 
-### Python Basics
+**Logistic Regression**
 
-1. intro.ipynb – Student introduction using dictionaries and f-strings.
+Evaluation Metrics:
 
-2. skills_counter.ipynb – Displays and counts skills using loops and formatting.
-
-3. even_odd.ipynb – Checks whether a number is even or odd.
-
-4. tip_calculator.ipynb – Calculates tip amount and total bill.
-
-5. word_frequency.ipynb – Counts word frequency in a sentence.
-
-6. calculator.ipynb – Basic calculator implementation using functions.
-
-7. grade_classifier.ipynb – Classifies grades based on marks.
-
-8. guessing_game.ipynb – Interactive number guessing game.
-
-9. contact_book.ipynb – Contact management and search application.
-
-## Skills Learned:
-
-* Variables
-* Loops
-* Conditional Statements
-* Functions
-* Dictionaries
-* User Input Handling
+* Accuracy
+* Precision
+* Recall
+* F1 Score
+* ROC-AUC
+* Confusion Matrix
 
 ---
 
-## Day 2 – Intermediate Python Projects
+### Advanced Model
 
-### Practical Python Applications
+**XGBoost Classifier**
 
-10. student_report.py – Student report card system with average calculation and grade generation.
+Advantages:
 
-11. comprehension_drills.py – Exercises using list, dictionary, and set comprehensions.
-
-12. file_records.py – Student record management using CSV files.
-
-13. typed_calculator.py – Calculator implementation using type hints.
-
-14. library_system.py – Library management system demonstrating inheritance and method overriding.
-
-15. config_manager.py – JSON configuration manager for saving and loading settings.
-
-16. fraction_class.py – Custom Fraction class with arithmetic operations.
-
-17. inventory.py – Inventory management system with CSV integration.
-
-## Skills Learned:
-
-* Classes & Objects
-* Inheritance
-* Polymorphism
-* Method Overriding
-* File Operations
-* CSV Integration
-* JSON Handling
+* Handles tabular data efficiently
+* Captures non-linear relationships
+* Higher predictive performance
 
 ---
 
-## Day 7 – Python Intermediate + Pandas & NumPy Tasks
+## 🔄 Cross Validation
 
-### Pandas & Data Analysis
+Implemented:
 
-18. pandas_explore.py – DataFrame creation, filtering, and analysis using Pandas.
+* Stratified K-Fold Cross Validation
+* Model Stability Analysis
 
-19. task4_filter_dataframe.py – Selects specific columns and filters rows based on conditions.
+Compared:
 
-20. task5_loc_iloc.py – Demonstrates label-based and position-based indexing.
+* Logistic Regression
+* XGBoost
 
-21. task6_missing_values.py – Handles missing values using dropna() and fillna().
+Using:
 
-22. task7_insights.py – Generates insights using describe() and value_counts().
-
-### NumPy Practice
-
-23. task8_numpy_basics.py – Array creation, inspection, indexing, and slicing.
-
-24. task9_numpy_advanced.py – Demonstrates masking, broadcasting, and cosine similarity.
-
-### Python Intermediate + JSON
-
-25. task1_profile_card.py – Creates a student profile card using dictionaries, type hints, and f-strings.
-
-26. task2_json_report.py – Reads JSON data and generates a formatted learner report.
-
-27. task3_class.py – Demonstrates Object-Oriented Programming using a Learner class.
-
-28. data.json – Sample JSON dataset containing learner information and skills.
-
-# Dataset & Configuration Files
-
-29. students.csv – Sample student dataset used for practice.
-
-30. results.csv – Generated report dataset.
-
-31. inventory.csv – Inventory dataset for inventory management.
-
-32. config.json – Configuration file used by the JSON manager project.---
-
-
-## Skills Learned:
-
-* Data Analysis
-* Numerical Computing
-* Data Manipulation
-* Statistical Analysis
+* Mean F1 Score
+* Standard Deviation
 
 ---
 
-# Advanced Pandas, Visualization & SQL Assignment
+## ⚙️ Hyperparameter Tuning
 
-## Project Objective
+Used:
 
-To analyze business sales data using both Pandas and SQL while creating meaningful visualizations and business insights.
+* GridSearchCV
 
-This project demonstrates how analytical techniques can be applied to real-world datasets for decision-making and reporting.
+Parameters Tuned:
 
----
+* n_estimators
+* max_depth
+* learning_rate
 
-## Dataset Used
+Objective:
 
-### customers.csv
-
-Customer information including:
-
-* Customer ID
-* Customer Name
-* Region
-* Segment
-
-### products.csv
-
-Product information including:
-
-* Product ID
-* Product Name
-* Category
-* Product Price
-
-### orders.csv
-
-Transaction details including:
-
-* Order ID
-* Customer ID
-* Product ID
-* Quantity
-* Order Date
+* Improve model generalization
+* Reduce overfitting
 
 ---
 
-## Analysis Performed
+## 🔍 Explainable AI (SHAP)
 
-### Data Audit
-
-* Dataset Inspection
-* Data Type Analysis
-* Missing Value Detection
-* Duplicate Record Checking
-
-### Data Cleaning
-
-* Standardized Column Names
-* Date Conversion
-* Data Quality Validation
-
-### Business Analytics
-
-* Revenue Analysis by Region
-* Revenue Analysis by Category
-* Customer Segment Analysis
-* Product Performance Analysis
-
-### Data Merging
-
-Merged customer, product, and order datasets to generate:
-
-* Revenue Metrics
-* Sales Performance Metrics
-* Top Selling Products
-* Average Order Value
-
-### Pivot Table Analysis
-
-Created multidimensional summaries for:
-
-* Region vs Category
-* Region vs Month
-
-### Data Visualization
+SHAP was used to explain model predictions.
 
 Generated:
 
-* Histogram
-* Scatter Plot
-* Bar Chart
-* Line Chart
-* Box Plot
-* Heatmap
+* SHAP Summary Plot
+* Feature Importance Analysis
+* Individual Prediction Explanations
 
-### SQL Essentials
-
-Implemented SQLite database and performed:
-
-* SELECT Queries
-* WHERE Conditions
-* ORDER BY
-* GROUP BY
-* Aggregate Functions
-* JOIN Operations
-* Subqueries
-
-### Pandas vs SQL
-
-Compared business results generated using:
-
-* Pandas
-* SQL
-
-and evaluated differences in readability and flexibility.
+This helps business stakeholders understand why a delivery is predicted to be delayed.
 
 ---
 
-# task_math_and_eda
+## 📋 Model Evaluation Metrics
 
-Task 1: Derivative and Slope Intuition
+* Accuracy
+* Precision
+* Recall
+* F1 Score
+* ROC-AUC Score
+* Confusion Matrix
 
-This task focuses on understanding derivatives and slopes using the function f(x)=x
-2
-+2x+1. Numerical derivatives are calculated at selected points, and tangent lines are plotted to visualize how the slope changes. The activity helps explain the role of gradients in machine learning optimization.
+### Business Focus Metric
 
-Task 2: Gradient Descent Mini-Experiment
+**Recall**
 
-This task demonstrates the working of gradient descent using a simple loss function. Different learning rates are tested to observe their impact on convergence speed and stability. The experiment helps understand how machine learning models optimize parameters by minimizing loss.
+Recall is particularly important because missing a delayed order can lead to poor customer experience and operational inefficiencies.
 
-Task 3: Probability Basics with Sampled Data
-
-This task involves generating random samples from uniform and normal distributions. Statistical measures such as mean and standard deviation are calculated, and histograms are used to compare the distributions. The objective is to understand probability concepts and data distribution patterns.
-
-Task 4: Full Exploratory Data Analysis (EDA) on California Housing Dataset
-
-This task performs a complete exploratory data analysis on the California Housing dataset. It includes data inspection, statistical summaries, correlation analysis, and visualization techniques to identify patterns, trends, and relationships among variables. The analysis provides insights useful for future machine learning model development.
 ---
 
-## Repository Structure
+## 💡 Business Recommendations
+
+1. Improve logistics performance in high-delay regions.
+2. Monitor orders with high freight charges.
+3. Allocate resources during peak demand months.
+4. Use predictive alerts for high-risk orders.
+5. Continuously monitor SHAP-important features.
+
+---
+
+## 📁 Repository Structure
 
 ```text
-aiml-crash-yash/
-│
-├── Python Projects
-├── Pandas Tasks
-├── NumPy Tasks
-├── CSV Files
-├── JSON Files
-├── Mathematics for Machine Learning and Exploratory Data Analysis Task
-│_
-├── customers.csv
-├── products.csv
-├── orders.csv
-├── sales.db
-├── assignment.ipynb
-│
-└── README.md
+├── README.md
+├── Order_Delay_Intelligence.ipynb
+├── datasets/
+│   ├── olist_orders_dataset.csv
+│   ├── olist_order_payments_dataset.csv
+│   ├── olist_customers_dataset.csv
+│   ├── olist_order_items_dataset.csv
+│   └── olist_products_dataset.csv
+├── plots/
+├── reports/
+└── requirements.txt
 ```
 
 ---
 
-## How to Run
+## 🚀 How to Run
 
-### Install Required Libraries
+### Step 1: Clone Repository
 
 ```bash
-pip install pandas numpy matplotlib seaborn jupyter
+git clone https://github.com/yourusername/order-delay-intelligence.git
 ```
 
-### Clone Repository
+### Step 2: Open Google Colab
 
-```bash
-git clone https://github.com/YashDadhich3105/aiml-crash-yash.git
+Upload:
+
+* Order_Delay_Intelligence.ipynb
+* Required Dataset Files
+
+### Step 3: Install Dependencies
+
+```python
+!pip install xgboost shap
 ```
 
-### Navigate to Project Folder
+### Step 4: Run All Cells
 
-```bash
-cd aiml-crash-yash
-```
-
-### Launch Jupyter Notebook
-
-```bash
-jupyter notebook
-```
-
-Open any notebook and run the cells.
+Run the notebook sequentially from top to bottom.
 
 ---
 
-## Learning Outcomes
+## 👨‍💻 Author
 
-Through these projects and assignments, I gained practical experience in:
+**Yash Dadhich**
 
-* Python Programming
-* Object-Oriented Programming
-* File Handling
-* Data Cleaning
-* Exploratory Data Analysis
-* Pandas Operations
-* NumPy Computations
-* Data Visualization
-* SQL Query Writing
-* Database Management
-* Business Analytics
-* Git & GitHub Workflow
+AI/ML Intern Project
 
 ---
 
-## Future Goals
+## ⭐ Acknowledgement
 
-* Machine Learning Projects
-* Deep Learning using TensorFlow & PyTorch
-* Data Visualization Dashboards
-* Streamlit Applications
-* Flask Web Applications
-* Cloud Deployment
-* End-to-End AI Solutions
+Special thanks to:
 
----
-
-## Author
-
-### Yash Dadhich
-
-Aspiring AI & Machine Learning Engineer
-
-* Python Developer
-* Data Analytics Enthusiast
-* AI/ML Learner
-* Open Source Contributor
-
-GitHub: https://github.com/YashDadhich3105
-
----
-
-## Acknowledgement
-
-This repository represents my continuous learning journey in Python, Data Analytics, SQL, and Artificial Intelligence. Every project included here contributes to strengthening my technical foundation and preparing me for real-world software development and AI/ML applications.
+* CodeTrade.io
+* Olist Brazilian E-Commerce Dataset
+* Scikit-Learn Community
+* XGBoost Developers
+* SHAP Contributors
